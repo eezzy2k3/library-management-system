@@ -4,6 +4,10 @@ const express = require("express")
 
 const app = express()
 
+
+const connectDb = require("./config/config")
+connectDb()
+
 let port = process.env.PORT
 if(port == null || port == ""){
     port = 3000
