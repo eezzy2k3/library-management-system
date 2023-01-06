@@ -38,6 +38,16 @@ const deleteBook = async (req,response)=>{
     })
     response.render({data:books})
 
+}
+
+const updateBook = async (req,response)=>{
+    try{
+        let {title, author, isbn, edition, status}=req.body
+        const  book=await Book.create({title, author, isbn,edition, status})
+        response.status(201).json({success:true, book})
+    }catch (err){
+        response.send(err.message)
+    }
 
 }
 
@@ -45,4 +55,4 @@ const deleteBook = async (req,response)=>{
 
 
 
-   module.exports ={registerAdmin, addBook, deleteBook}
+   module.exports ={registerAdmin, addBook, deleteBook, updateBook}
