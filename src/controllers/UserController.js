@@ -15,6 +15,11 @@ const bcrypt=require('bcrypt')
 
     }
 
+    const  giveReview=async (req, res)=>{
+
+
+    }
+
 
 
 module.exports = register

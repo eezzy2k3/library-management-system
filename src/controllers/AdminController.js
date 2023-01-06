@@ -43,7 +43,7 @@ const deleteBook = async (req,response)=>{
 const updateBook = async (req,response)=>{
     try{
         let {title, author, isbn, edition, status}=req.body
-        const  book=await Book.create({title, author, isbn,edition, status})
+        const  book=await Book.update({title, author, isbn,edition, status})
         response.status(201).json({success:true, book})
     }catch (err){
         response.send(err.message)
@@ -52,7 +52,21 @@ const updateBook = async (req,response)=>{
 }
 
 
+const lendBook = async (req, res)=>{
+    const  user=User.create({name, password, email, role:"user" })
+    var books =[Book]
+    const requestedBook=req.body.title
+    books.forEach(book=>{
+        if (book.title==requestedBook){
+
+        }
+        res.render(book)
+    })
+
+}
 
 
 
-   module.exports ={registerAdmin, addBook, deleteBook, updateBook}
+
+
+   module.exports ={registerAdmin, addBook, deleteBook, updateBook, lendBook}

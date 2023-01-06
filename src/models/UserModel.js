@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-
+const Book=require('../models/Book')
 
 const userSchema=mongoose.Schema({
     name:{
@@ -23,6 +23,11 @@ const userSchema=mongoose.Schema({
         Required:true,
         enum:["user", "admin"],
         default:"user"
+    },
+    books:{
+        type:Book,
+        Required:true,
+        array:[]
     }
 })
 

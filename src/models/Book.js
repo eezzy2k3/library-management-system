@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 
-const userSchema=mongoose.Schema({
+const bookSchema=mongoose.Schema({
     title:{
         type:String,
         Required:true,
@@ -26,5 +26,13 @@ const userSchema=mongoose.Schema({
     status:{
         type:Boolean,
         Required:true,
+    },
+
+    review:{
+        type:Number
+
     }
 })
+
+module.exports=mongoose.model("Book", bookSchema)
+
