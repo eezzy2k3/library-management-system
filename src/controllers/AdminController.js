@@ -53,15 +53,27 @@ const updateBook = async (req,response)=>{
 
 
 const lendBook = async (req, res)=>{
-    const  user=User.create({name, password, email, role:"user" })
+    let user=User.create({name, password, email, role:"user" })
     var books =[Book]
     const requestedBook=req.body.title
     books.forEach(book=>{
-        if (book.title==requestedBook){
-
-        }
-        res.render(book)
+        if (book.title==requestedBook){user=User.create({name, role:"user", book})}
+        res.render(user)
     })
+
+}
+
+const blockUser=async (req, res)=>{
+    var users =[User]
+    const requestedUser=req.body.email
+    var j=0
+    users.forEach(user=>{
+        j=j+1
+        if (user.email==requestedUser){
+            users.splice((j-1), 1)
+        }
+    })
+    res.render({data:users})
 
 }
 
@@ -69,4 +81,6 @@ const lendBook = async (req, res)=>{
 
 
 
-   module.exports ={registerAdmin, addBook, deleteBook, updateBook, lendBook}
+
+
+   module.exports ={registerAdmin, addBook, deleteBook, updateBook, lendBook, blockUser}

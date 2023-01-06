@@ -2,7 +2,6 @@
 
 const  User=require('../models/UserModel')
 
-const bcrypt=require('bcrypt')
 
     const register = async (req,response)=>{
     try{
