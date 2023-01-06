@@ -10,8 +10,7 @@ app.use(express.json())
 app.use("/api/v1/user", userRouter)
 
 
-const connectDb = require("./config/config")
-connectDb()
+
 
 let port = process.env.PORT
 if(port == null || port == ""){
