@@ -1,35 +1,38 @@
 const mongoose = require("mongoose")
-const Book=require('../models/Book')
 
-const userSchema=mongoose.Schema({
-    name:{
+
+const bookSchema=mongoose.Schema({
+    title:{
         type:String,
         Required:true,
     },
 
-    email:{
+    author:{
         type:String,
         Required: true,
         unique:true
     },
 
-    password:{
+    isbn:{
         type:String,
         Required:true
     },
 
-    role:{
+    edition:{
         type:String,
         Required:true,
-        enum:["user", "admin"],
-        default:"user"
     },
-    books:{
-        type:Book,
+
+    status:{
+        type:Boolean,
         Required:true,
-        array:[]
+    },
+
+    review:{
+        type:Number
+
     }
 })
 
+module.exports=mongoose.model("Book", bookSchema)
 
-module.exports=mongoose.model("User", userSchema)

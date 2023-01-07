@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
-const Book=require('../models/Book')
 
-const userSchema=mongoose.Schema({
+
+const adminSchema=mongoose.Schema({
     name:{
         type:String,
         Required:true,
@@ -23,13 +23,8 @@ const userSchema=mongoose.Schema({
         Required:true,
         enum:["user", "admin"],
         default:"user"
-    },
-    books:{
-        type:Book,
-        Required:true,
-        array:[]
     }
 })
 
 
-module.exports=mongoose.model("User", userSchema)
+module.exports=mongoose.model("Admin", adminSchema)
