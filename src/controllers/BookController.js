@@ -12,10 +12,19 @@ const addBook = async (req,response)=>{
 
 }
 
+const findABook=async (req, res)=>{
+     const bookId = req.params.bookId
+     const book = await Book.findById(bookId)
+    if(!book)return res.status(404).json({success:false,msg:`The book with the id ${bookId} does not exist`})
+    res.status(200).json({success:true,book})
+}
+
 const deleteBook=async (req, res)=>{
-     const book = req.params.bookId
-    
+    const bookId = req.params.bookId
+    const book = await Book.findById(bookId)
+   if(!book)return res.status(404).json({success:false,msg:`The book with the id ${bookId} does not exist`})
+   book = await Book.findByIdAndDelete(bookId)
 }
 
 
-module.exports=addBook
+module.exports= {addBook,findABook}
