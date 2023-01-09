@@ -14,10 +14,7 @@ const  User=require('../models/UserModel')
 
     }
 
-    const  giveReview=async (req, res)=>{
-
-
-    }
+   
 
 
 

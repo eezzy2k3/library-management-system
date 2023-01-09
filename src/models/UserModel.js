@@ -25,9 +25,8 @@ const userSchema=mongoose.Schema({
         default:"user"
     },
     books:{
-        type:Book,
-        Required:true,
-        array:[]
+        type:[],
+        Required:true
     }
 })
 

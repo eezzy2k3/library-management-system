@@ -27,16 +27,9 @@ const addBook = async (req,response)=>{
 
 
 const deleteBook = async (req,response)=>{
-    var books =[Book]
-    const requestedBook=req.body.title
-    var j=0
-    books.forEach(book=>{
-        j=j+1
-        if (book.title==requestedBook){
-            books.splice((j-1), 1)
-        }
-    })
-    response.render({data:books})
+    const {bookId} = req.params
+    const book = await Book.findByIdAndDelete(bookId)
+    response.status(200).json({success:true,data:{}})
 
 }
 
