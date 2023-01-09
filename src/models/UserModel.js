@@ -27,6 +27,10 @@ const userSchema=mongoose.Schema({
     books:{
         type:[],
         Required:true
+    },
+    isUserBlocked:{
+        type:Boolean,
+        default:false
     }
 })
 

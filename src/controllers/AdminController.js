@@ -28,15 +28,18 @@ const addBook = async (req,response)=>{
 
 const deleteBook = async (req,response)=>{
     const {bookId} = req.params
-    const book = await Book.findByIdAndDelete(bookId)
+    const book = await Book.findById(bookId)
+    if(!book)return res.status(404).json({success:false,msg:`The book with the id ${bookId} does not exist`})
+    book = await Book.findByIdAndDelete(bookId)
     response.status(200).json({success:true,data:{}})
 
 }
 
 const updateBook = async (req,response)=>{
     try{
+        const {bookId} = req.params
         let {title, author, isbn, edition, status}=req.body
-        const  book=await Book.update({title, author, isbn,edition, status})
+        const  book =await Book.findByIdAndUpdate({_id:bookId},req.body,{new:true})
         response.status(201).json({success:true, book})
     }catch (err){
         response.send(err.message)

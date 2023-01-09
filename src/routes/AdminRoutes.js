@@ -9,7 +9,6 @@ router.post("/regadmin", registerAdmin)
 router.post("/add", addBook)
 router.post("/lend", lendBook)
 router.delete("/block/user{id}", blockUser)
-router.delete("/book/:bookId",deleteBook)
 
 
 
